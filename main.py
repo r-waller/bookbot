@@ -5,7 +5,7 @@ def main():
     print(text)
     print(f"There are {get_word_count(text)} words in the book.")
     print(count_characters(text))
-    
+    print(get_alpha_count(count_characters(text)))
 
 def get_book_text(path):
     """Return the text of the book"""
@@ -28,6 +28,23 @@ def count_characters(text):
         else:
             char_count[char] = 1  
     return char_count
+
+
+def get_alpha_count(dict: dict[str, int]):
+    """Return the count of each letter in the text."""
+    return "\n".join(
+        map(
+            lambda x: f"The '{x[0]}' character was found {x[1]} times.",
+            filter(
+                lambda x: x[0].isalpha(), 
+                sorted(
+                    dict.items(),
+                    key=lambda x: x[1],
+                    reverse=True
+                )
+            )
+        )
+    )
 
 
 if __name__ == "__main__":
