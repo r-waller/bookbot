@@ -1,11 +1,11 @@
 def main():
     """Main function"""
     book_path = "books/frankenstein.txt"
+    print(f"--- Begin report of {book_path} ---")
     text = get_book_text(book_path)
-    print(text)
-    print(f"There are {get_word_count(text)} words in the book.")
-    print(count_characters(text))
+    print(f"{get_word_count(text)} found in the document.\n")
     print(get_alpha_count(count_characters(text)))
+    print("--- End report ---")
 
 def get_book_text(path):
     """Return the text of the book"""
